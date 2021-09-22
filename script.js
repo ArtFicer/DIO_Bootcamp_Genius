@@ -12,7 +12,7 @@ const red = document.querySelector(".red");
 const green = document.querySelector(".green");
 const yellow = document.querySelector(".yellow");
 
-//funcao para game over
+//funcao para fim de jogo
 let gameOver = () => {
   alert(
     `Pontuação: ${score}!\nVocê perdeu!\nClique em OK para iniciar um novo jogo`
@@ -23,6 +23,7 @@ let gameOver = () => {
   playGame();
 };
 
+//Gera uma nova cor
 const newCollor = () => {
   order.push(Math.floor(Math.random() * 4));
   clickedOrder = [];
@@ -32,6 +33,7 @@ const newCollor = () => {
   }
 };
 
+//Controla o tempo de exibição
 const lightColor = (element, number) => {
   number = number * 500 - 250;
   setTimeout(() => {
@@ -57,6 +59,7 @@ let checkOrder = () => {
   }
 };
 
+//Confere o click
 const click = (color) => {
   clickedOrder.push(color);
   createColorElement(color).classList.add("selected");
@@ -66,7 +69,7 @@ const click = (color) => {
   }, 250);
 };
 
-//funcao que retorna a cor
+//Funcao que retorna o objeto html da cor
 let createColorElement = (color) => {
   if (color == 0) {
     return green;
@@ -79,19 +82,19 @@ let createColorElement = (color) => {
   }
 };
 
-//funcao para proximo nivel do jogo
+//Funcao para proximo nivel do jogo
 let nextLevel = () => {
   score++;
   newCollor();
 };
 
-//eventos de clique para as cores
+//Captura dos eventos de clique para as cores
 green.onclick = () => click(0);
 red.onclick = () => click(1);
 yellow.onclick = () => click(2);
 blue.onclick = () => click(3);
 
-//funcao de inicio do jogo
+//Funcao de inicio do jogo
 let playGame = () => {
   alert("Bem vindo ao Gênesis! Iniciando novo jogo!");
   score = 0;
@@ -99,5 +102,5 @@ let playGame = () => {
   nextLevel();
 };
 
-//inicio do jogo
+//Starta o game
 playGame();
